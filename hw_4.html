@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style id="myStyle">
+    </style>
+</head>
+
+<body>
+    <h1>Создать меню</h1>
+    <form name="formMenu">
+        <p>Пункты меню:
+            <input type="text" name="menuPoints" value="Главная, О компании, Новости" size="50">
+        </p>
+        <p>Цвет текста:
+            <input type="color" name="fc" value="#ffffff">
+        </p>
+        <p>Цвет фона:
+            <input type="color" name="bc" value="#279fda">
+        </p>
+        <p>Цвет hover:
+            <input type="color" name="hc" value="#fb9d11">
+        </p>
+        <p>
+            <input type="button" name="but" value="Создать меню" onclick="menu()">
+        </p>
+    </form>
+    <header id="cont">
+        <!-- <ul>
+            <li><a href="#">Пункт меню</a></li>
+            <li><a href="#">Пункт меню</a></li>
+            <li><a href="#">Пункт меню</a></li>
+
+        </ul> -->
+    </header>
+    <div id="myPic"></div>
+    <script>
+        function menu() {
+            let elemMenu = formMenu.menuPoints.value;
+            let fc = formMenu.fc.value;
+            let bc = formMenu.bc.value;
+            let hc = formMenu.hc.value;
+            let arrMenu = elemMenu.split(', ');
+            let s1 = '', s2 = '';
+            console.log(elemMenu)
+            for (let i = 0; i < arrMenu.length; i++) {
+                s1 += `<li onclick="imgAppend(${i+1})"><a href="#">${arrMenu[i]}</a></li>`;
+
+            }
+            s1 = `<ul>${s1}</ul>`
+            s2 = `a {
+            background-color: ${bc};
+                color: ${fc};
+            }
+            a:hover {
+                background-color: ${hc};
+            }`;
+
+            cont.innerHTML = s1;
+            formMenu.but.value = 'Изменить меню';
+            myStyle.innerHTML = s2;
+        }
+        function imgAppend(n) {
+            let myImg = `<img onclick="myPic.innerHTML =''" src="images/${n}.jpg">`
+            myPic.innerHTML = myImg
+        }
+    </script>
+    
+
+</body>
+
+</html>
